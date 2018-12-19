@@ -1,0 +1,32 @@
+{
+  "name": "shiftappens",
+  "version": "0.0.1",
+  "description": "Shift Appens app 2018",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.23"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicamegane/ShiftAPPens.git"
+  },
+  "keywords": [
+    "Shift",
+    "hackaton",
+    "webdev"
+  ],
+  "author": "Catarina Pires, Jessica Mégane, Rafael Paiva, Victor Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessicamegane/ShiftAPPens/issues"
+  },
+  "homepage": "https://github.com/jessicamegane/ShiftAPPens#readme"
+}
