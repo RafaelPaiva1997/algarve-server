@@ -15,8 +15,8 @@ exports.insert = function(lib, item, callback) {
     libs[lib].insert(item, {w:1}, callback);
 }
 
-exports.update = function(lib, key, callback) {
-    libs[lib].update(key, {w:1}, callback);
+exports.update = function(lib, key, update, callback) {
+    libs[lib].update(key, update, {w:1}, callback);
 }
 
 exports.find = function(lib, key, callback) {

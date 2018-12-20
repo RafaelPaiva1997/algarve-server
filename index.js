@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.post("/api", function(req, res) {
-    console.log(req.body);
+    console.log(JSON.stringify(req.body));
     var handler = handlers[req.body.lib][req.body.action];
 
     if (handler)

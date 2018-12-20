@@ -6,9 +6,13 @@ exports.add = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    db.update(req.body.lib, req.body.data.key, req_res.res_err_result(res));
+    db.update(req.body.lib, req.body.data.key, req.body.data.update, req_res.res_err_result(res));
 }
 
 exports.find = (req, res) => {
     db.find(req.body.lib, req.body.data.key, req_res.res_err_result(res));
+}
+
+exports.deleteOne = (req, res) => {
+    db.deleteOne(req.body.lib, req.body.data.key, req_res.res_err_result(res));
 }
