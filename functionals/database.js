@@ -26,6 +26,10 @@ exports.update = function(lib, key, update, callback) {
   libs[lib].update(key, update, { w: 1 }, callback);
 };
 
+exports.findOne = function(lib, key, callback) {
+  libs[lib].findOne(key, callback);
+};
+
 exports.find = function(lib, key, callback) {
   libs[lib].find(key).toArray(callback);
 };

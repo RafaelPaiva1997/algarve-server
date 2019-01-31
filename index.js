@@ -24,7 +24,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.post("/api", (req, res, next) => database.findOne({ _id: ObjectID(req.body.auth.id) }, (err, result) => !err && result && result === req.body.auth.user ? next() : res.sendStatus(401)), (req, res) => {
+//metalpro 955nv3jj
+
+app.post("/api", (req, res, next) => database.findOne("users", { _id: ObjectID(req.body.auth.id) }, (err, result) => !err && result && JSON.stringify(result) === JSON.stringify(req.body.auth.user) ? next() : res.sendStatus(401)), (req, res) => {
     console.log(JSON.stringify(req.body));
     var handler = handlers[req.body.lib][req.body.action];
 
