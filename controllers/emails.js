@@ -2,6 +2,26 @@ var db = require("../functionals/database");
 var req_res = require("../functionals/req_res");
 var email_lib = require("../functionals/email_lib");
 
+var buffer = [];
+
+var email = (mails, to) => () => {
+  email_lib.sendText(mails[0].from, to, mails[0].subject, mails[0].text, mails[0].html).then(info => {
+    console.log(info);
+    sending();
+  }).catch(err => {
+    console.log(err);
+    sending();
+  })
+}
+
+var sending = () => {
+  if (buffer.length) {
+    var mails =  buffer.splice(0, 50);
+    var to = mails.map(e => e.to);
+    setTimeout(email(mails, to), Math.floor(Math.random * 49000) - 17000);
+  }
+}
+
 exports.add = (req, res) => {
   db.insert(req.body.lib, req.body.data.item, req_res.res_err(res));
 };
@@ -42,19 +62,20 @@ exports.deleteMany = (req, res) => {
 };
 
 exports.bulkMail = (req, res) => {
-  db.find(req.body.lib, {mailingList: req.body.data.to}, (err, result) => {
+  db.find(req.body.lib, { mailingList: req.body.data.to }, (err, result) => {
     if (!err) {
-      email_lib
-    .sendText(
-      req.body.data.from,
-      result.map(e => e.email),
-      req.body.data.subject,
-      req.body.data.text,
-      req.body.data.html
-    )
-    .then(info => res.send(info).status(200))
-    .catch(err => res.send(err).status(400));
+      result.map(e =>
+        buffer.push({
+          from: req.body.data.from,
+          to: e.email,
+          subject: req.body.data.subject,
+          text: req.body.data.text,
+          html: req.body.data.html
+        })
+      );
+      res.sendStatus(200);
+      sending();
     }
-    else sendStatus(404);
-  })
+    else res.send(err).status(400);
+  });
 };

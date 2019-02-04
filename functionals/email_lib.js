@@ -2,8 +2,8 @@ const nodemailer = require('nodemailer')
 const mailgunTransport = require('nodemailer-mailgun-transport')
 const mailgunOptions = {
   auth: {
-    api_key: "e88d6b3551a89ecf44a974bb3350fe02-9b463597-20e1b8d0",
-    domain: "sandbox07e510b477bb44fcb7eeccf0195540ec.mailgun.org",
+    api_key: "08926764465f8dbdc223032dbb7d2633-9b463597-c0532c42",
+    domain: "marketing.metalpro.pt",
   }
 }
 const transport = mailgunTransport(mailgunOptions)
