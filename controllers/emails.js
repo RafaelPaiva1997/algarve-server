@@ -4,8 +4,8 @@ var email_lib = require("../functionals/email_lib");
 
 var buffer = [];
 
-var email = (mails, to) => () => {
-  email_lib.sendText(mails[0].from, to, mails[0].subject, mails[0].text, mails[0].html).then(info => {
+var email = (mail) => () => {
+  email_lib.sendText(mail.from, mail.to, mail.subject, mail.text, mail.html.replace("...emailtemplateholder...", mail.to)).then(info => {
     console.log(info);
     sending();
   }).catch(err => {
@@ -16,9 +16,8 @@ var email = (mails, to) => () => {
 
 var sending = () => {
   if (buffer.length) {
-    var mails =  buffer.splice(0, 1);
-    var to = mails.map(e => e.to);
-    setTimeout(email(mails, to), Math.floor(Math.random * 18000) - 7000);
+    var mail =  buffer.shift();
+    setTimeout(email(mail), Math.floor(Math.random * 18000) - 7000);
   }
 }
 
