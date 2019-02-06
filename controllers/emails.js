@@ -16,9 +16,9 @@ var email = (mails, to) => () => {
 
 var sending = () => {
   if (buffer.length) {
-    var mails =  buffer.splice(0, 50);
+    var mails =  buffer.splice(0, 1);
     var to = mails.map(e => e.to);
-    setTimeout(email(mails, to), Math.floor(Math.random * 49000) - 17000);
+    setTimeout(email(mails, to), Math.floor(Math.random * 18000) - 7000);
   }
 }
 
