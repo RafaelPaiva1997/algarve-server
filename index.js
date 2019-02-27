@@ -40,8 +40,6 @@ app.use(express.static(path.join(__dirname, 'public')))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
 
-//metalpro 955nv3jj
-
 app.post(
   "/api",
   (req, res, next) =>
